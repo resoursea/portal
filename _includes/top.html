@@ -9,6 +9,7 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+
   <meta name="description" content="{{ page.description }}">
   <meta name="keywords" content="resoursea,resource,service,{{ page.tags | join: ',' }}">
   <meta property="og:title" content="{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}">
@@ -16,6 +17,14 @@
   <meta property="og:site_name" content="{{ site.title }}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ site.url }}/img/resoursea-logo-header.png"/>
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}">
+  <meta name="twitter:description" content="{{ page.description }}">
+  <meta name="twitter:image" content="{{ site.url }}/img/resoursea-logo-header.png">
+
   <link href="/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
   <link href="/style.css" rel="stylesheet" type="text/css" media="all" />
   {% include analytics-head.html %}
