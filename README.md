@@ -1,5 +1,4 @@
 Resoursea
-
 ====================
 
 Resource based services.
@@ -9,7 +8,6 @@ A network of services providing a sea of resources.
 This repo supports [resoursea.com](http://resoursea.com/).
 
 Feel free to contribute to the project.
-
 =========
 
 For more details, access the [portal](http://resoursea.com/) or send us an [email](contact@resoursea.com).
