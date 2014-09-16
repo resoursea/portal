@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<div class="container">
+  <div class="row">
+    <div class="span9">
+      {{ content }}
+    </div>
+    <aside class="span3 sidebar">
+      {% include search.html %}
+      
+      <h4><i class="icon-question-sign"></i> About Resoursea</h4>
+      <div style="text-align:justify;">
+      <p>Resoursea is a resource based service that siplifies the way web services are developed.</p>
+      </div>
+      {% include feed-subscribe.html %}
+      {% include share-page.html %}
+    </aside>
+  </div>
+</div>

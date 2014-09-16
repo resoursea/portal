@@ -1,0 +1,101 @@
+---
+layout: default
+---
+<div class="container">
+  <div class="row">
+    <div class="span9">
+      <section class="post">
+        <h1 class="page-header">{{ page.title }}</h1>
+        <article class="content">
+          {{ content }}
+        </article>
+      </section>
+
+      <nav class="pagination">
+        <ul>
+          {% if page.next %}
+            <li class="next"><a href="{{ page.next.url }}" title="{{ page.next.title }}"><i class="icon-arrow-left"></i> Older</a></li>
+          {% else %}
+            <li class="next disabled"><a><i class="icon-arrow-left"></i> Older</a></li>
+          {% endif %}
+          <li><a href="{{ site.archive_path }}"><i class="icon-folder-open"></i> Archive</a></li>
+          {% if page.previous %}
+            <li class="prev"><a href="{{ page.previous.url }}" title="{{ page.previous.title }}">Newer <i class="icon-arrow-right"></i></a></li>
+          {% else %}
+            <li class="prev disabled"><a>Newer <i class="icon-arrow-right"></i></a></li>
+          {% endif %}
+        </ul>
+      </nav>
+      
+      {% include comments.html %}
+      
+    </div>
+
+
+    <aside class="span3 sidebar">
+      {% include search.html %}
+      
+      <h3><i class="icon-time"></i> Publication date</h3>
+      <div class="date"><span>{{ page.date | date: "%B %e, %Y" }}</span></div>
+      
+      {% unless page.tags == nil or page.tags == empty %}
+        <h3><i class="icon-tags"></i> Tags</h3>
+        <ul class="tag_box">
+        {% for tag in page.tags %}
+          <li><a href="{{ site.tags_path }}#{{ tag }}" class="label">{{ tag }} <span>{{ site.tags[tag].size }}</span></a></li>
+        {% endfor %}
+        </ul>
+      {% endunless %} 
+
+      {% unless page.author == nil or page.author == empty  %}
+        <h4>
+        
+        <i class="icon-user"></i> Author 
+        
+        <span class="author-icons">
+          {% unless page.author.email == nil or page.author.email == empty %}
+            <a href="mailto:{{ page.author.email }}"><i class="icon-envelope"></i></a>
+          {% endunless %} 
+          {% unless page.author.url == nil or page.author.url == empty %}
+            <a href="{{ page.author.url }}"><i class="icon-home"></i></a>
+          {% endunless %} 
+          {% unless page.author.github == nil or page.author.github == empty %}
+            <a href="https://github.com/{{ page.author.github }}" rel="nofollow"><i class="icon-github"></i>
+          {% endunless %} 
+          {% unless page.author.twitter == nil or page.author.twitter == empty %}
+            <a href="https://twitter.com/{{ page.author.twitter }}" rel="nofollow"><i class="icon-twitter"></i></a>
+          {% endunless %} 
+        </span>
+        
+        </h4>
+        
+        {% unless page.author.name == nil or page.author.name == empty %}
+          <p>{{ page.author.name }}</p>
+        {% endunless %}
+        
+      {% endunless %} 
+      
+      {% unless page.reference == nil or page.reference == empty  %}
+        <h3><i class="icon-list-alt"></i> References</h3>
+        <p>{{ page.reference }}</p>
+      {% endunless %} 
+
+      {% assign exist = false %}
+      {% for post in site.related_posts %}
+        {% unless exist %}
+          {% assign exist = true %}
+          <h4><i class="icon-thumbs-up"></i> Related articles</h4>
+          <ul class="related-posts">
+        {% endunless %}
+        <li><a href="{{ post.url }}">{{ post.title }}</a></li>                     
+      {% endfor %}
+      {% if exist %}
+        </ul>
+      {% endif %}
+      
+      {% include feed-subscribe.html %}
+      {% include share-post.html %}
+      
+    </aside>
+  </div>
+</div>

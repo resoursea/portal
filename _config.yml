@@ -1,0 +1,24 @@
+title : Resoursea
+timezone: America/Sao_Paulo
+
+url: http://resoursea.com
+baseurl: /
+permalink: /:categories/:title/
+tags_path: /tags/
+archive_path: /archive/
+map_path: /map/
+
+paginate: 5
+paginate_path: 'pagina:num'
+# For better related posts
+lsi: true
+
+author :
+  name : Rafael Henrique Moreira
+  email : rafadev7@gmail.com
+  url : http://rafadev.com/
+
+github_url: http://github.com/resoursea/portal/
+feedburner_url: http://feeds.feedburner.com/resoursea/
+disqus_id: resoursea
+google_analytics_id: UA-54839151-1

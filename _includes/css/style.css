@@ -1,0 +1,257 @@
+@media (max-width: 767px){
+  body {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+
+body {
+  background-image: url('/img/groovepaper.png');
+}
+
+h1 {
+  font-size: 31.5px;
+}
+h2 {
+  font-size: 25.5px;
+}
+h3 {
+  font-size: 19.5px;
+}
+h4 {
+  font-size: 15.5px;
+}
+
+/* ------ HEADER ------ */
+.logo {
+  text-align: center;
+}
+
+/* ----- NAVBAR ----- */
+.navbar {
+  -webkit-box-shadow: 0 4px 8px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 4px 8px rgba(0,0,0,.15);
+  box-shadow: 0 4px 8px rgba(0,0,0,.15);
+}
+@media (max-width: 767px){
+  .navbar-inner {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+.navbar .nav {
+  margin-right: 0;
+}
+
+/* ----- POSTS ----- */
+.post {
+  margin-bottom: 40px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  word-wrap: break-word;
+  -webkit-border-radius: 4px 4px 4px 4px;
+     -moz-border-radius: 4px 4px 4px 4px;
+          border-radius: 4px 4px 4px 4px;
+  -webkit-box-shadow: 0 4px 8px rgba(0,0,0,.15);
+     -moz-box-shadow: 0 4px 8px rgba(0,0,0,.15);
+          box-shadow: 0 4px 8px rgba(0,0,0,.15);
+}
+
+
+
+/* ----- POST/PAGE HEADER ----- */
+.page-header {
+  color: #555;
+  border: 1px solid #ddd;
+  border-bottom: 1px dashed #ddd;
+  padding: 10px 15px 10px;
+  margin: 0;
+  background-color: #fafafa;
+  
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  
+  -webkit-border-radius: 4px 4px 0 0;
+     -moz-border-radius: 4px 4px 0 0;
+          border-radius: 4px 4px 0 0;
+}
+
+@media (max-width: 767px){
+  .page-header {
+    padding: 5px;
+  }
+  .content {
+    padding: 5px;
+  }
+}
+
+.page-header, .page-header a {
+  color: #0054a6;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  text-decoration: none;
+}
+
+.page-header a:hover {
+  color: rgb(0, 75, 150);;
+}
+
+/* The white background content wrapper */
+.content {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-top: 0;
+  -webkit-border-radius: 0 0 4px 4px;
+     -moz-border-radius: 0 0 4px 4px;
+          border-radius: 0 0 4px 4px;
+}
+
+
+
+/* ----- SIDEBAR ----- */
+.sidebar  h1, .sidebar  h2, .sidebar  h3, .sidebar h4{
+  padding: 10px 0px;
+  border-bottom: 1px dashed #aaa;
+  margin-bottom: 10px;
+  line-height: 16px;
+  font-size: 16px;
+  text-shadow: 0px 1px 0px #fff;
+}
+
+.sidebar>ul.related-posts>li {
+  margin-bottom: 10px;
+}
+
+.author-icons {
+  float: right;
+}
+
+.author-icons a img {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-top: 1px;
+  vertical-align: text-top;
+}
+
+
+
+/* ----- PAGINATION ----- */
+.pagination {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.pagination ul {
+  -webkit-box-shadow: 0 4px 8px rgba(0,0,0,.15);
+     -moz-box-shadow: 0 4px 8px rgba(0,0,0,.15);
+          box-shadow: 0 4px 8px rgba(0,0,0,.15);
+}
+
+.pagination span.previous, .pagination span.next {
+  margin: 0 10px;
+}
+
+.pagination ul>li>a{
+  color: #222;
+}
+
+.pagination ul>li>a.current-page, .pagination ul>li>span.current-page{
+  color: #999;
+  cursor: default;
+  background-color: transparent;
+}
+
+.pagination ul>.disabled>span>i, .pagination ul>.disabled>a>i{
+  opacity: 0.7;
+}
+
+
+/* ----- FOOTER ----- */
+.container > footer {
+  margin-top: 20px;
+}
+
+.container > footer p {
+  text-align: center;
+}
+
+.footer {
+  clear: both;
+  border-top: 1px dashed #ccc;
+  padding-top: 15px;
+  color: #666;
+}
+
+.footer img.cc {
+  display: inline-block;
+  vertical-align: -0.2em;
+  border: none;
+  width:1em;
+  height:1em;
+  opacity:0.4;
+}
+.footer a.cc:hover {
+  text-decoration: none;
+}
+.footer a.cc:hover img.cc {
+  opacity:1;
+}
+
+
+
+/* ----- TAGS ----- */
+.tag_box {
+	list-style:none;
+	margin:0;
+	padding:5px 0;
+	overflow:hidden;
+}
+.tag_box li {
+	line-height:28px;
+}
+.tag_box.inline li {
+	float:left;
+}
+.tag_box a  span{
+	vertical-align:top;
+	font-size:0.8em;
+  color: #ff0;
+}
+
+
+
+/* ----- CODIGO HIGHLIGHT IN POST ----- */
+.highlight{
+  padding: 10px 0;
+  width: 100%;
+  background: #333;
+  color: #fff;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 10px rgba(0,0,0,.3), 0 1px 0 rgba(255,255,255,.1), 0 -1px 0 rgba(0,0,0,.5);
+}
+.highlight pre {
+  background: transparent;
+  margin: 0;
+  border: 0px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.highlight>pre>code.console, .highlight>pre>code.console>span.go, .highlight>pre>code.console>span.gp{
+  color: #eee;
+  background-color: transparent;
+}
+
+/* ----- ICONS ----- */
+.icon-twitter {
+  background-image: url("/img/icon-twitter.png");
+  background-position: 0 0;
+}
+.icon-feed {
+  background-image: url("/img/icon-feed.png");
+  background-position: 0 0;
+}
+.icon-github {
+  background-image: url("/img/icon-github.png");
+  background-position: 0 0;
+}
