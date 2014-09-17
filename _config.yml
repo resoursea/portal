@@ -13,12 +13,13 @@ paginate_path: 'pagina:num'
 # For better related posts
 lsi: true
 
-author :
-  name : Rafael Henrique Moreira
-  email : rafadev7@gmail.com
-  url : http://resoursea.com/
+author:
+  name: Rafael Henrique Moreira
+  email: rafadev7@gmail.com
+  github: https://github.com/rafadev7
+  twitter: https://twitter.com/rafadev7
 
-github_url: http://github.com/resoursea/portal/
+github_url: https://github.com/resoursea/portal/
 feedburner_url: http://feeds.feedburner.com/resoursea/
 disqus_id: resoursea
 google_analytics_id: UA-54839151-1

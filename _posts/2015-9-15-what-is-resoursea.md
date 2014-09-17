@@ -5,7 +5,6 @@ description: Resoursea - resource based services
 author:
   name: Rafael Henrique Moreira
   email: rafadev7@gmail.com
-  url: http://resoursea.com/
   github: rafadev7
   twitter: rafadev7
 tags : [concept]
