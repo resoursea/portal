@@ -49,4 +49,3 @@ This is just the beginning and we know that has a lot that needs to be done, but
 The automation of the process for creating web services can be a very profitable tool in no time. Reducing the costs of design and development of software giving a very big advantage over other companies. Contribute to a project like this, besides developing your programmer abilities and teamwork, can become your main source of income.
 
 You can engage the community by signing the [mailing list](https://groups.google.com/d/forum/resoursea) and contributing to the [repositories on github](https://github.com/resoursea/).
-
