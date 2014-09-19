@@ -1,6 +1,6 @@
 ---
 layout: post
-title : What is Resoursea
+title : What is Resoursea ?
 description: Resoursea is an open source framework that provides a resource based service through an REST interface.
 author:
   name: Rafael Henrique Moreira
