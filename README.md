@@ -3,6 +3,10 @@ Resoursea
 
 Resoursea is an open source framework that provides a resource based service through an REST interface.
 
+With this framework you can really focus on the resources and how they are served by your service and leaves the tool to manage them by a scalable and efficient web server.
+
+This framework is written in Go lang and uses its powerful decentralized package manager.
+
 This repo supports [resoursea.com](http://resoursea.com/).
 
 Feel free to contribute to the project.
