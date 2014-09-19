@@ -18,7 +18,7 @@ Fielding proposed a set of architectural principles for design web services with
 
 However, there is no current tool on the market that allows a level of abstraction that allows you to focus only on the resources and how they are provided.
 
-It's time to think differently. Techniques for creating web servers are already known and they need not to be re-implemented everytime we need to create a web service. With an efficient and scalable open source web server that can provide resources through a REST interface we can focus on only the resources and how they are provided. We need a agile framework for implementing web services as fast as our needs.
+It's time to think differently. The best techniques for creating web servers are already known and they need not to be re-implemented everytime we need to create a web service. With an efficient and scalable open source web server that can provide resources through a REST interface we can focus on only the resources and how they are provided. We need a framework for implementing web services as fast as our needs.
 
 We can no longer create services the old way. Today the services need to be scalable and automatically adapt to user demand. The easiest way to achieve scalability in the server component is by adding one more constraint in the server component: it is not allowed to store session states on the server. It's a architectural style is called Client-stateless-server.
 
