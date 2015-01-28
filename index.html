@@ -1,61 +1,34 @@
 ---
 layout: page
 title: Resoursea
-description: Resoursea is an open source framework that provides a resource based service through an REST interface.
-tags: [resource based service]
+description: A high productivity web framework for quickly writing resource based services fully implementing the REST architectural style.
+tags: [resource based service REST]
 group: home
 ---
-{% for post in paginator.posts %}
-  <section  class="post">
-    <h1 class="page-header"><a href="{{ post.url }}">{{ post.title }}</a></h1>
-    <article class="content">
-      {{ post.content }}
-    </article>
-  </section >
-{% endfor %}
+<section  class="post">
+  <article class="content">
 
-{% unless paginator.total_pages == 1 %}
-  <nav  class="pagination">
-    <ul class="pages">
-      {% assign base_paginator = site.paginate_path | remove:':num' %}
-      {% if paginator.previous_page %}
-        <li class="prev">
-          {% if paginator.previous_page == 1 %}
-            <a href="{{ site.baseurl }}"><i class="icon-arrow-left"></i> Older</a>
-          {% else %}
-            <a href="{{ site.baseurl }}{{ base_paginator }}{{ paginator.previous_page }}/"><i class="icon-arrow-left"></i> Older</a>
-          {% endif %}
-        </li>
-      {% else %}
-        <li class="prev disabled"><span><i class="icon-arrow-left"></i> Older</span></li>
-      {% endif %}
-      
-      
-      <li class="page">
-        {% if paginator.page == 1 %}
-          <span class="current-page">1</span>
-        {% else %}
-          <a href="{{ site.baseurl }}">1</a>
-        {% endif %}
-      </li>
-      {% for count in (2..paginator.total_pages) %}
-        <li class="page">
-          {% if count == paginator.page %}
-            <span class="current-page">{{ count }}</span>
-          {% else %}
-            <a href="{{ site.baseurl }}{{ base_paginator }}{{ count }}/">{{ count }}</a>
-          {% endif %}
-        </li>
-      {% endfor %}
-      
-      
-      {% if paginator.next_page %}
-        <li class="next">
-          <a href="{{ site.baseurl }}{{ base_paginator }}{{ paginator.next_page }}/">Newer <i class="icon-arrow-right"></i></a>
-        </li>
-      {% else %}
-        <li class="next disabled"><span>Newer <i class="icon-arrow-right"></i></span></li>
-      {% endif %}
-    </ul>
-  </nav>
-{% endunless %}
+    <h2>Getting Started</h2>
+
+    <p>First <a href="https://golang.org/doc/install">install Go</a> and setting up your <a href="http://golang.org/doc/code.html#GOPATH">GOPATH</a>.</p>
+
+    <p>Install the Resoursea package:</p>
+
+    <pre><code>go get github.com/resoursea/api</code></pre>
+
+    <p>To create your service all you have to do is create ordinary Go <em>structs</em> and call the <code>api.newRouter</code> to route them for you. Then, just call the standard Go server to provide the resources on the network.</p>
+
+    <h2><a id="user-content-hello-world" class="anchor" href="#hello-world" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hello World</h2>
+
+    <p>Save the code below in a file named <code>main.go</code>.</p>
+
+    {% gist rafadev7/a904c12897bffb6897c4 %}
+
+    <p>Then run your new service:</p>
+
+    <pre><code>go run main.go</code></pre>
+
+    <p>Now you have a new REST service runnig, to <strong>GET</strong> your new <code>HelloWorld</code> Resource, open any browser and type <code>http://localhost:8080/helloworld</code>.</p>
+
+  </article>
+</section >
