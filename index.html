@@ -18,7 +18,7 @@ group: home
 
     <p>To create your service all you have to do is create ordinary Go <em>structs</em> and call the <code>api.newRouter</code> to route them for you. Then, just call the standard Go server to provide the resources on the network.</p>
 
-    <h2><a id="user-content-hello-world" class="anchor" href="#hello-world" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hello World</h2>
+    <h2>Hello World</h2>
 
     <p>Save the code below in a file named <code>main.go</code>.</p>
 
@@ -29,6 +29,35 @@ group: home
     <pre><code>go run main.go</code></pre>
 
     <p>Now you have a new REST service runnig, to <strong>GET</strong> your new <code>HelloWorld</code> Resource, open any browser and type <code>http://localhost:8080/helloworld</code>.</p>
+
+    <h2>The Resource Tree</h2>
+
+    <p>Resources is declared using ordinary Go <strong>structs</strong> and <strong>slices</strong> of <strong>struts</strong>.</p>
+
+    <p>When declaring the service you create a tree of <strong>structs</strong> that will be mapped in routes. The Resource name will be the name of the field that receives the Resource and it is used as its URI address. If you declare a list of Resources <code>type Resources []Resource</code> and put it in the Resource tree, the service will behave like the imagined: Requests for the route <code>/resources</code> will be answer by the <code>Resources</code> type, and requests for the route <code>/resources/:ID</code> will be answer by the <code>Resource</code> struct, and the ID will be cautch and injected as the dependency <code>*api.ID</code> whenever <code>Resource</code> requests for it.</p>
+
+    <h3>ID</h3>
+
+    <p>The ID will be injected in every Resource if it's parent is a slice of the Resource itself. For instance:</p>
+
+    {% gist rafadev7/38690166b2e20a1d2284 %}
+
+    <p>When you run de service above and try to <strong>GET</strong> one specific resource, accessing <code>http://localhost:8080/api/resources/123</code> in a browser, the server will return:</p>
+
+<pre><code>{
+  "Resource": {
+    "ID": 123,
+    "Message": "Hello world!"
+  }
+}</code></pre>
+
+    <p>Here we can see that the declared initial state was injected in the Resource constructor, and the <code>ID</code> sent by the URI was also injected in the constructor.</p>
+
+    <h2>Showcase</h2>
+
+    <p>A showcase of how to quickly create a REST services in Golang using the Resoursea framework.</p>
+
+    <p>Access the <a href="https://github.com/resoursea/example">example repository on github</a>.</p>
 
   </article>
 </section >
