@@ -48,93 +48,9 @@ group: home
 
 	<p>Another more complete example shows how to build and testing a <a href="https://github.com/resoursea/example">simple library service</a> with database access, dependency injection and the use of <code>api.ID</code>.</p>
 
-	<h2>Basis</h2>
+	<h2>Lern More</h2>
 
-	<ul>
-	<li><p>Create a hierarchy of ordinary Go <em>structs</em> and it will be mapped and routed, each <em>struct</em> will turn into a new Resource.</p></li>
-	<li><p>Define HTTP methods for Resources these methods will be cached and routed.</p></li>
-	<li><p>Define the dependencies of each method and these dependencies will be constructed and injected whenever necessary.</p></li>
-	<li><p>Resources could define a constructor <code>Init</code> method, it will be used to construct the Resource every time it needs to be injected.</p></li>
-	<li><p>If you define the initial state of some Resource, it will be injected in the constructor method every time it was requested.</p></li>
-	<li><p>The URI address of the Resource will be the identifier of the field that receives this Resource.</p></li>
-	<li><p>The root of the Resource tree isn't attached to any field, so you can pass 2 optional parameters when creating the router: the field identifier and the field tag.</p></li>
-	</ul>
-
-	<h3>More Info</h3>
-
-	<ul>
-	<li><p>Initial state of Resources are optional, if not defined a new empty instance will be injected.</p></li>
-	<li><p>The constructor method <code>Init</code> is optional, if not declared the initial state, or a new empty instance will be injected.</p></li>
-	<li><p>The first argument of a Go <em>struct</em> method is the <em>struct</em> itself, it means that for mapped methods the instance of the Resource will be always injected as the first argument.</p></li>
-	<li><p>One of the constraints for a REST services is to don't keep states in the server component, it means that the Resources shouldn't keep states over the connection. For this rason, every request will receive a new constructed Resource of each dependency.</p></li>
-	<li><p>Constructors can have dependencies, but <strong>you can't design a circular dependency</strong>.</p></li>
-	<li><p>Obs: If you change the state of some dependency somewhere that isn't it's method constructor, when it receives pointer Dependency value for instance, it can cause unexpected behavior.</p></li>
-	</ul>
-
-	<h2>The Resource Tree</h2>
-
-	<p>Resources is declared using ordinary Go <em>structs</em> and <em>slices</em> of <em>struts</em>.</p>
-
-	<p>When declaring the service you create a tree of <em>structs</em> that will be mapped in routes.</p>
-
-	<p>If you declare a list of Resources <code>type Gophers []Gopher</code> its behavior will be::</p>
-
-	<ul>
-	<li><p>Requests for the route <code>/gophers</code> will be answered by the <code>Gophers</code> type.</p></li>
-	<li><p>Requests for the route <code>/gophers/:ID</code> will be answered by the <code>Gopher</code> type.</p></li>
-	<li><p>Methods in <code>Gopher</code> could request for <code>*api.ID</code>. This dependency keeps the requested ID for this Resource present in the URI.</p></li>
-	</ul>
-
-	<h3>ID</h3>
-
-	<p>The <code>api.ID</code> dependency will be injected in Resource's methods that it's parent is a slice of the Resource itself. For instance:</p>
-
-
-    {% gist rafadev7/38690166b2e20a1d2284 %}
-
-	<p>When you run de service above and try to <strong>GET</strong> one specific <code>Gopher</code>, accessing <code>http://localhost:8080/api/gophers/123</code> in a browser, the server will return:</p>
-
-<pre><code>{
-  "Gopher": {
-    "ID": 123,
-    "Message": "Hello Gophers!"
-  }
-}</code></pre>
-
-	<p>Here we can see that the declared initial state was injected in the <code>Gopher</code> constructor, and the <code>api.ID</code> sent by the URI was also injected in the constructor.</p>
-
-	
-	<h2>The Mapped Methods</h2>
-
-	<p>In the REST arquitecture HTTP methods should be used explicitly in a way that's consistent with the protocol definition. This basic REST design principle establishes a one-to-one mapping between create, read, update, and delete (CRUD) operations and HTTP methods. According to this mapping:</p>
-
-	<ul>
-	<li>GET = Retrieve a representation of a Resource.</li>
-	<li>POST = Create a new Resource subordinate of the specified resource collection.</li>
-	<li>PUT = Update the specified Resource.</li>
-	<li>DELETE = Delete the specified Resource.</li>
-	<li>HEAD = Get metadata about the specified Resource.</li>
-	</ul>
-
-	<p>This thing scans and route all Resource's methods that has some of those prefix. Methods also can be used to create the Actions some Resource can perform, you can declare it this way: <code>POSTLike()</code>. It will be mapped to the route <code>[POST] /resource/like</code>. If you declare just <code>POST()</code>, it will be mapped to the route <code>[POST] /resource</code>.</p>
-
-	<h2>The Dependency Injection</h2>
-
-	<p>When this framework is creating the Routes for mapped methods, it creates a tree with the dependencies of each method and ensures that there is no circular dependency. This tree is used to answer the request using a depth-first pos-order scanning to construct the dependencies, which ensures that every dependency will be present in the context before it is was requested.</p>
-
-	<p>When injecting the required dependency, first the framework search for the initial value of the Resource in the Resource tree, if it wasn't declared, it creates a new empty value for the <code>struct</code>. If this dependency has a creator method (Init), it is called using this value, and its returned values is injected on the subsequent dependencies until arrive to the root of the dependency tree, the mapped HTTP method itself.</p>
-
-	<p>If the method is requesting for an Interface, the framework need find in the Resource tree which one implements it, the framework will search in the siblings, parents or uncles. The same search is done when requiring Structs too, but it is not necessary to be in the Resource tree, if it is not present just a new empty value is used. All this process is done in the route creation time, it guarantee that everything is cached before start to receive the client requests.</p>
-
-	<h2>The Resoursea Ecosystem</h2>
-
-	<p>You also has a high software reuse through the sharing of Resources already created by the community. It’s the resource sea!</p>
-
-	<p>Think about a Resource used by virtually all web services, like an instance of the database. Most web services require this Resource to process the request. This Resource and its behavior not need to be implemented by all the developers. It is much better if everyone uses and contribute with just one package that contains this Resource. Thus we’ll have stable and secure packages with Resources to suit most of the needs. Allowing the exclusive focus on particular business rule, of your service.</p>
-
-	<p>In Go the explicit declaration of implementation of an Interface is not required, which provide a decoupling of the Interface with the struct which satisfies this interface. This added to the fact tat Go provides a decentralized package manager provides the ideal environment for the sustainable growth of an ecosystem with interfaces and features that can be reused.</p>
-
-	<p>Think of a scenario with a list of interfaces, each with a list of Resources that implements it. His work as a developer of services is choosing the interfaces and Resources to attend the requirements of the service and implements only the specific features of your nincho.</p>
+	<p>Learn more in the <a rel="nofollow" href="https://github.com/resoursea/api">github API repository</a>.</p>
 
 	<h3>Router Printer</h3>
 
